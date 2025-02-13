@@ -1,9 +1,11 @@
 const yesButton = document.querySelector(".yes");
 const noButton = document.querySelector(".no");
+const message = document.querySelector(".message");
+const container = document.querySelector(".container");
 
 let currentScale = 1;
 let height = 100;
-let clickCount = 0; // Fix: Initialize clickCount
+let clickCount = 0;
 
 const noButtonText = [
   "Are you sure?",
@@ -32,7 +34,7 @@ function moveButton() {
 }
 
 noButton.addEventListener("click", () => {
-  clickCount++; // Fix: Increment clickCount
+  clickCount++;
 
   if (clickCount >= noButtonText.length) {
     noButton.style.display = "none";
@@ -41,7 +43,7 @@ noButton.addEventListener("click", () => {
 
   moveButton();
 
-  currentScale += 1; // Fix: Prevent excessive scaling
+  currentScale += 1;
   height += 10;
 
   yesButton.style.transform = `scale(${currentScale})`;
@@ -51,5 +53,6 @@ noButton.addEventListener("click", () => {
 });
 
 yesButton.addEventListener("click", () => {
-  alert("Thank you for your feedback!");
+  container.style.display = "none";
+  message.classList.remove("hidden");
 });
